@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Home from "./components/Home";
+import Header from "./components/Header/Header";
+import data from "./data.json";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Movie from "./components/Movie";
+import NotFound from "./components/NotFound";
+import AddMovie from "./components/AddMovie/AddMovie";
 
 function App() {
+  const [searchValue, setSearchValue] = useState("");
+  const [stars, setStars] = useState(0);
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    setMovies(data);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Header
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          stars={stars}
+          setStars={setStars}
+        />
+        <AddMovie setMovies={setMovies} />
+        <div className="Content">
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <Home
+                  movies={movies}
+                  setMovies={setMovies}
+                  searchValue={searchValue}
+                  stars={stars}
+                />
+              }
+            />
+            <Route path="/:title" element={<Movie movies={movies} />} />
+            <Route path="/*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 

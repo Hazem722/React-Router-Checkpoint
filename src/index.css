@@ -1,13 +1,130 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+@media (max-width: 991px) {
+  .navbar > .container {
+    flex-direction: column;
+    align-items: center !important;
+  }
+}
+@media (max-width: 768px) {
+  .navbar > .container > .filter-search {
+    flex-direction: column;
+  }
+  .navbar > .container > div > a {
+    border-bottom: 1px solid #fff;
+  }
+}
+.Header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 9;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.home {
+  padding: 1.5rem;
+}
+.styles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 4rem;
+  margin-top: 80px;
+}
+@media (max-width: 992px) {
+  .styles {
+    margin-top: 120px;
+  }
+}
+@media (max-width: 768px) {
+  .styles {
+    margin-top: 230px;
+  }
+}
+.card-movie {
+  border-radius: 10px !important;
+}
+@media (max-width: 768px) {
+  .card-movie {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.card-movie > img {
+  overflow: hidden;
+}
+.card-body {
+  text-align: center;
+}
+.card-body > div {
+  font-size: 0.75rem;
+}
+.card-body > p {
+  margin-bottom: 0rem;
+}
+.react-stars > div > div {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.add-movie-btn {
+  border: none;
+  color: #fff;
+  background-color: crimson;
+  width: 50px;
+  height: 50px;
+  opacity: 0.8;
+  transition: 0.3s;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: 600;
+  position: fixed;
+  right: 0;
+  top: 2px;
+  z-index: 10;
+}
+@media (max-width: 768px) {
+  .add-movie-btn {
+    width: 100%;
+    border-radius: 0;
+    top: 180px;
+  }
+}
+.add-movie-btn:hover {
+  opacity: 1;
+}
+.overlay {
+  background-color: rgb(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.form {
+  border: 1px solid #ffffff;
+  border: 1px solid #ffffff;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #198754;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+.form input:not(:last-child) {
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.form input:not(:last-child):focus {
+  outline: none;
+}
+.form input[type="submit"] {
+  border: none;
+  border-radius: 5px;
+  padding: 2px 20px;
 }
